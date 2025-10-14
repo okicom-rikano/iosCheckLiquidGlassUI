@@ -34,7 +34,7 @@ watch(isOpen, (newValue) => {
 
     <Dialog :open="isOpen" @close="closeModal" class="relative z-50">
       <!-- Transparent overlay that closes on click -->
-      <div class="fixed inset-0 bg-transparent" aria-hidden="true" @click="closeModal" />
+      <div class="fixed inset-0 bg-transparent bg-black/40" aria-hidden="true" @click="closeModal" />
 
       <!-- Full-screen container to center the panel -->
       <div class="fixed inset-0 flex items-center justify-center p-4">
