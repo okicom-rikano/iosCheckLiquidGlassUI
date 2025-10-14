@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles for modal-open class on body */
+body.modal-open {
+  background: rgba(0, 0, 0, 0.4);
+}
