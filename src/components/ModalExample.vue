@@ -20,6 +20,8 @@ watch(isOpen, (newValue) => {
     document.body.classList.remove('modal-open')
   }
 })
+
+const toggleBgcolor = ref('bg-black/40');
 </script>
 
 <template>
@@ -34,7 +36,7 @@ watch(isOpen, (newValue) => {
 
     <Dialog :open="isOpen" @close="closeModal" class="relative z-50">
       <!-- Transparent overlay that closes on click -->
-      <div class="fixed inset-0 bg-transparent bg-black/40" aria-hidden="true" @click="closeModal" />
+      <div class="fixed inset-0" :class="toggleBgcolor" aria-hidden="true" @click="closeModal" ></div>
 
       <!-- Full-screen container to center the panel -->
       <div class="fixed inset-0 flex items-center justify-center p-4">
@@ -53,11 +55,13 @@ watch(isOpen, (newValue) => {
               背景が減光されます。
             </p>
             <p class="text-sm text-gray-500">
-              高さの指定には100vhではなく<code class="bg-gray-100 px-1 rounded">h-dvh</code>を使用しています。
+              #app内のメインコンテンツの高さの指定には100vhではなく<code class="bg-gray-100 px-1 rounded">h-dvh</code>を使用しています。
             </p>
           </div>
 
-          <div class="mt-6 flex justify-end space-x-3">
+          <div class="mt-6 flex max-sm:flex-col max-sm:gap-1 max-sm:space-x-0 justify-end space-x-3">
+            <button type="button" class="bg-black text-white px-4 py-2 font-xs rounded-md" @click="toggleBgcolor = 'bg-black/40'">背景を暗くする</button>
+            <button type="button" class="bg-black text-white px-4 py-2 font-xs rounded-md" @click="toggleBgcolor = 'bg-transparent'">背景を透過</button>
             <button
               type="button"
               @click="closeModal"
